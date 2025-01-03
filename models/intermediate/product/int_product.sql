@@ -1,0 +1,34 @@
+-- models/intermediate/product/int_product.sql
+
+WITH PRODUCT AS (
+    SELECT 
+        PRODUCTID, 
+        NAME, 
+        PRODUCTNUMBER, 
+        MAKEFLAG, 
+        FINISHEDGOODSFLAG, 
+        COLOR, 
+        SAFETYSTOCKLEVEL, 
+        REORDERPOINT, 
+        STANDARDCOST, 
+        LISTPRICE, 
+        SIZE, 
+        SIZEUNITMEASURECODE, 
+        WEIGHTUNITMEASURECODE, 
+        WEIGHT, 
+        DAYSTOMANUFACTURE, 
+        PRODUCTLINE, 
+        CLASS, 
+        STYLE, 
+        PRODUCTSUBCATEGORYID, 
+        PRODUCTMODELID, 
+        CAST(SELLSTARTDATE AS DATE) AS SELLSTARTDATE, 
+        CAST(SELLENDDATE AS DATE) AS SELLENDDATE, 
+        --CAST(DISCONTINUEDDATE AS DATE) AS DISCONTINUEDDATE, --CAMPO DESCARTADO, SOMENTE CONTÉM VALORES NULOS 
+        ROWGUID,
+        CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE
+    FROM 
+        {{ ref('stg_adventure_works__product') }}
+)
+
+SELECT * FROM PRODUCT
