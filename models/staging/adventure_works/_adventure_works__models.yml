@@ -1,0 +1,416 @@
+version: 1
+
+models:
+  - name: salesorderheader
+    description: "Tabela de pedidos"
+    config:
+      tags: 
+        - pedido
+    columns:
+        - name: salesorderid
+          description: "ID do pedido"
+          data_type: number(38)
+        - name: revisionnumber
+          description: "Número da revisão"
+          data_type: number(38)
+        - name: orderdate
+          description: "Data do pedido"
+          data_type: varchar(16777216)
+        - name: duedate
+          description: "Data de vencimento"
+          data_type: varchar(16777216)
+        - name: shipdate
+          description: "Data de envio"
+          data_type: varchar(16777216)
+        - name: status
+          description: "Status do pedido"
+          data_type: number(38)
+        - name: onlineorderflag
+          description: "Indica se é um pedido online"
+          data_type: boolean
+        - name: purchaseordernumber
+          description: "Número do pedido de compra"
+          data_type: varchar(16777216)
+        - name: accountnumber
+          description: "Número da conta"
+          data_type: varchar(16777216)
+        - name: customerid
+          description: "ID do cliente"
+          data_type: number(38)
+        - name: salespersonid
+          description: "ID do vendedor"
+          data_type: number(38)
+        - name: territoryid
+          description: "ID do território"
+          data_type: number(38)
+        - name: billtoaddressid
+          description: "ID do endereço de cobrança"
+          data_type: number(38)
+        - name: shiptoaddressid
+          description: "ID do endereço de envio"
+          data_type: number(38)
+        - name: shipmethodid
+          description: "ID do método de envio"
+          data_type: number(38)
+        - name: creditcardid
+          description: "ID do cartão de crédito"
+          data_type: number(38)
+        - name: creditcardapprovalcode
+          description: "Código de aprovação do cartão de crédito"
+          data_type: varchar(16777216)
+        - name: currencyrateid
+          description: "ID da taxa de câmbio"
+          data_type: number(38)
+        - name: subtotal
+          description: "Subtotal do pedido"
+          data_type: float
+        - name: taxamt
+          description: "Valor do imposto"
+          data_type: float
+        - name: freight
+          description: "Valor do frete"
+          data_type: float
+        - name: totaldue
+          description: "Total devido"
+          data_type: float
+        - name: comment
+          description: "Comentário"
+          data_type: number(38)
+        - name: rowguid
+          description: "GUID da linha"
+          data_type: varchar(16777216)
+        - name: modifieddate
+          description: "Data da última modificação"
+          data_type: varchar(16777216)
+  - name: customer
+    description: "Tabela de clientes"
+    config:
+      tags:  
+        - cliente
+    columns:
+        - name: customerid
+          description: "ID do cliente"
+          data_type: number(38)
+        - name: personid
+          description: "ID da pessoa"
+          data_type: number(38)
+        - name: storeid
+          description: "ID da loja"
+          data_type: number(38)
+        - name: territoryid
+          description: "ID do território"
+          data_type: number(38)
+        - name: rowguid
+          description: "GUID da linha"
+          data_type: varchar(16777216)
+        - name: modifieddate
+          description: "Data da última modificação"
+          data_type: varchar(16777216)
+  - name: person
+    description: "Tabela de pessoas"
+    config:
+      tags: 
+        - pessoa
+        - cliente
+        - vendedor
+    columns:
+        - name: businessentityid
+          description: "ID da pessoa"
+          data_type: number(38)
+        - name: persontype
+          description: "Tipo de pessoa"
+          data_type: varchar(16777216)
+        - name: namestyle
+          description: "Estilo do nome"
+          data_type: boolean
+        - name: title
+          description: "Título"
+          data_type: varchar(16777216)
+        - name: firstname
+          description: "Primeiro nome"
+          data_type: varchar(16777216)
+        - name: middlename
+          description: "Nome do meio"
+          data_type: varchar(16777216)
+        - name: lastname
+          description: "Sobrenome"
+          data_type: varchar(16777216)
+        - name: suffix
+          description: "Sufixo"
+          data_type: varchar(16777216)
+        - name: emailpromotion
+          description: "Promoção por e-mail"
+          data_type: number(38)
+        - name: additionalcontactinfo
+          description: "Informações de contato adicionais"
+          data_type: varchar(16777216)
+        - name: demographics
+          description: "Dados demográficos"
+          data_type: varchar(16777216)
+        - name: rowguid
+          description: "GUID da linha"
+          data_type: varchar(16777216)
+        - name: modifieddate
+          description: "Data da última modificação"
+          data_type: varchar(16777216)
+  - name: salesorderheadersalesreason
+    description: "Tabela de relacionamento entre pedidos e motivo da venda"
+    config:
+      tags: 
+        - pedido
+        - motivo
+        - venda
+    columns:
+        - name: salesorderid
+          description: "ID do pedido"
+          data_type: number(38)
+        - name: salesreasonid
+          description: "ID do motivo da venda"
+          data_type: number(38)
+        - name: modifieddate
+          description: "Data da última modificação"
+          data_type: varchar(16777216)
+  - name: salesreason
+    description: "Tabela do motivo da venda"
+    config:
+      tags:
+        - pedido
+        - motivo
+        - venda
+    columns:
+      - name: salesreasonid
+        description: "ID do motivo da venda"
+        data_type: number(38)
+      - name: name
+        description: "Nome do motivo"
+        data_type: varchar(16777216)
+      - name: reasontype
+        description: "Tipo de motivo"
+        data_type: varchar(16777216)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: varchar(16777216)
+  - name: address
+    description: "Tabela de endereços dos pedidos (endereço de entrega/conta)"
+    config:
+      tags: 
+        - endereco
+        - entrega
+        - conta
+    columns:
+      - name: addressid
+        description: "ID do endereço"
+        data_type: number(38)
+      - name: addressline1
+        description: "Linha 1 do endereço"
+        data_type: varchar(16777216)
+      - name: addressline2
+        description: "Linha 2 do endereço"
+        data_type: varchar(16777216)
+      - name: city
+        description: "Cidade"
+        data_type: varchar(16777216)
+      - name: stateprovinceid
+        description: "ID do estado ou província"
+        data_type: number(38)
+      - name: postalcode
+        description: "Código postal"
+        data_type: varchar(16777216)
+      - name: spatiallocation
+        description: "Localização espacial"
+        data_type: varchar(16777216)
+      - name: rowguid
+        description: "GUID da linha"
+        data_type: varchar(16777216)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: varchar(16777216)
+  - name: stateprovince
+    description: "Tabela de estados/províncias dos endereços"
+    config:
+      tags: 
+        - endereco
+    columns:
+      - name: stateprovinceid
+        description: "ID do estado ou província"
+        data_type: number(38)
+      - name: stateprovincecode
+        description: "Código do estado ou província"
+        data_type: varchar(16777216)
+      - name: countryregioncode
+        description: "Código do país ou região"
+        data_type: varchar(16777216)
+      - name: isonlystateprovinceflag
+        description: "Indicador de único estado ou província"
+        data_type: boolean
+      - name: name
+        description: "Nome do estado ou província"
+        data_type: varchar(16777216)
+      - name: territoryid
+        description: "ID do território"
+        data_type: number(38)
+      - name: rowguid
+        description: "GUID da linha"
+        data_type: varchar(16777216)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: varchar(16777216)
+  - name: countryregion
+    description: "Tabela de países/regiões dos endereços"
+    config:
+      tags:
+        - endereco
+    columns:
+      - name: countryregioncode
+        description: "Código do país ou região"
+        data_type: varchar(16777216)
+      - name: name
+        description: "Nome do país ou região"
+        data_type: varchar(16777216)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: varchar(16777216)
+  - name: salesorderdetail
+    description: "Tabela de detalhes dos pedidos"
+    config:
+      tags: 
+        - pedido
+        - detalhe
+    columns:
+      - name: salesorderid
+        description: "ID do pedido"
+        data_type: number(38)
+      - name: salesorderdetailid
+        description: "ID do detalhe do pedido"
+        data_type: number(38)
+      - name: carriertrackingnumber
+        description: "Número de rastreamento do transportador"
+        data_type: varchar(16777216)
+      - name: orderqty
+        description: "Quantidade do pedido"
+        data_type: number(38)
+      - name: productid
+        description: "ID do produto"
+        data_type: number(38)
+      - name: specialofferid
+        description: "ID da oferta especial"
+        data_type: number(38)
+      - name: unitprice
+        description: "Preço unitário"
+        data_type: float
+      - name: unitpricediscount
+        description: "Desconto do preço unitário"
+        data_type: float
+      - name: rowguid
+        description: "GUID da linha"
+        data_type: varchar(16777216)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: varchar(16777216)
+  - name: product
+    description: "Tabela de produtos"
+    config:
+      tags: 
+        - pedido
+        - detalhe
+    columns:
+      - name: productid
+        description: "ID do produto"
+        data_type: number(38)
+      - name: name
+        description: "Nome do produto"
+        data_type: varchar(16777216)
+      - name: productnumber
+        description: "Número do produto"
+        data_type: varchar(16777216)
+      - name: makeflag
+        description: "Indicador de fabricação"
+        data_type: boolean
+      - name: finishedgoodsflag
+        description: "Indicador de produtos acabados"
+        data_type: boolean
+      - name: color
+        description: "Cor do produto"
+        data_type: varchar(16777216)
+      - name: safetystocklevel
+        description: "Nível de estoque de segurança"
+        data_type: number(38)
+      - name: reorderpoint
+        description: "Ponto de reposição"
+        data_type: number(38)
+      - name: standardcost
+        description: "Custo padrão"
+        data_type: float
+      - name: listprice
+        description: "Preço de lista"
+        data_type: float
+      - name: size
+        description: "Tamanho do produto"
+        data_type: varchar(16777216)
+      - name: sizeunitmeasurecode
+        description: "Código da unidade de medida do tamanho"
+        data_type: varchar(16777216)
+      - name: weightunitmeasurecode
+        description: "Código da unidade de medida do peso"
+        data_type: varchar(16777216)
+      - name: weight
+        description: "Peso do produto"
+        data_type: float
+      - name: daystomanufacture
+        description: "Dias para fabricar"
+        data_type: number(38)
+      - name: productline
+        description: "Linha de produto"
+        data_type: varchar(16777216)
+      - name: class
+        description: "Classe do produto"
+        data_type: varchar(16777216)
+      - name: style
+        description: "Estilo do produto"
+        data_type: varchar(16777216)
+      - name: productsubcategoryid
+        description: "ID da subcategoria do produto"
+        data_type: number(38)
+      - name: productmodelid
+        description: "ID do modelo do produto"
+        data_type: number(38)
+      - name: sellstartdate
+        description: "Data de início das vendas"
+        data_type: varchar(16777216)
+      - name: sellenddate
+        description: "Data de término das vendas"
+        data_type: varchar(16777216)
+      - name: discontinueddate
+        description: "Data de descontinuação"
+        data_type: number(38)
+      - name: rowguid
+        description: "GUID da linha"
+        data_type: varchar(16777216)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: varchar(16777216)
+  - name: creditcard
+    description: "Tabela de cartões de credito"
+    config:
+      tags: 
+        - cartao
+        - credito
+    columns:
+      - name: creditcardid
+        description: "ID do cartão de crédito"
+        data_type: number(38)
+      - name: cardtype
+        description: "Tipo de cartão"
+        data_type: varchar(16777216)
+      - name: cardnumber
+        description: "Número do cartão"
+        data_type: number(38)
+      - name: expmonth
+        description: "Mês de expiração"
+        data_type: number(38)
+      - name: expyear
+        description: "Ano de expiração"
+        data_type: number(38)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: varchar(16777216)
