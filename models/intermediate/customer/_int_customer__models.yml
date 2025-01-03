@@ -1,0 +1,53 @@
+version: 1
+
+models:
+  - name: int_customer
+    description: "Tabela de clientes"
+    config:
+      tags: 
+        - pessoa
+        - cliente
+    columns:
+        - name: customerid
+          description: "ID do cliente"
+          data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
+        - name: personid
+          description: "ID da pessoa"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: rowguidcustomer
+          description: "GUID da linha da tabela customer"
+          data_type: varchar(38)
+        - name: modifieddatecustomer
+          description: "Data da última modificação da tabela customer"
+          data_type: date
+        - name: persontype
+          description: "Tipo de pessoa"
+          data_type: varchar(4)
+        - name: title
+          description: "Título"
+          data_type: varchar(6)
+        - name: name
+          description: "Nome e sobrenome"
+          data_type: varchar(150)
+          data_tests:
+            - not_null
+        - name: suffix
+          description: "Sufixo"
+          data_type: varchar(5)
+        - name: emailpromotion
+          description: "Promoção por e-mail"
+          data_type: number(38)
+        - name: demographics
+          description: "Dados demográficos"
+          data_type: varchar(1000)
+        - name: rowguidperson
+          description: "GUID da linha da tabela person"
+          data_type: varchar(38)
+        - name: modifieddateperson
+          description: "Data da última modificação da tabela person"
+          data_type: date
