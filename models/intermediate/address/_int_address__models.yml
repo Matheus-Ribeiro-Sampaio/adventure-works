@@ -1,0 +1,75 @@
+version: 1
+
+models:
+  - name: int_ship_address
+    description: "Tabela de endereços"
+    config:
+      tags: 
+        - endereco
+        - entrega
+        - conta
+    columns:
+      - name: shiptoaddressid
+        description: "ID do endereço"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: addressline1
+        description: "Linha 1 do endereço"
+        data_type: varchar(150)
+      - name: addressline2
+        description: "Linha 2 do endereço"
+        data_type: varchar(150)
+      - name: city
+        description: "Cidade"
+        data_type: varchar(80)
+        data_tests:
+            - not_null
+      - name: stateprovinceid
+        description: "ID do estado ou província"
+        data_type: number(38)
+        data_tests:
+            - not_null
+      - name: postalcode
+        description: "Código postal"
+        data_type: varchar(12)
+      - name: spatiallocation
+        description: "Localização espacial"
+        data_type: varchar(50)
+      - name: rowguidaddres
+        description: "GUID da linha da tabela address"
+        data_type: varchar(38)
+      - name: modifieddateaddres
+        description: "Data da última modificação da tabela address"
+        data_type: date
+      - name: stateprovincecode
+        description: "Código do estado ou província"
+        data_type: number(5)
+      - name: countryregioncode
+        description: "Código do país ou região"
+        data_type: varchar(3)
+        data_tests:
+            - not_null
+      - name: isonlystateprovinceflag
+        description: "Indicador de único estado ou província"
+        data_type: boolean
+      - name: state_province
+        description: "Nome do estado ou província"
+        data_type: varchar(80)
+        data_tests:
+            - not_null
+      - name: rowguidstateprovince
+        description: "GUID da linha da tabela stateprovince"
+        data_type: varchar(38)
+      - name: modifieddatestateprovince
+        description: "Data da última modificação da tabela stateprovince"
+        data_type: date
+      - name: country_region
+        description: "Nome do país ou região"
+        data_type: varchar(80)
+        data_tests:
+            - not_null
+      - name: modifieddatecountryregion
+        description: "Data da última modificação da tabela countryregion"
+        data_type: date
