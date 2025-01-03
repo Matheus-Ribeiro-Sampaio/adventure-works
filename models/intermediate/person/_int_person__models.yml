@@ -1,0 +1,43 @@
+version: 1
+
+models:
+  - name: int_person
+    description: "Tabela de pessoas"
+    config:
+      tags: 
+        - pessoa
+        - cliente
+        - vendedor
+    columns:
+        - name: personid
+          description: "ID da pessoa"
+          data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
+        - name: persontype
+          description: "Tipo de pessoa"
+          data_type: varchar(4)
+        - name: title
+          description: "Título"
+          data_type: varchar(6)
+        - name: name
+          description: "Nome e sobrenome"
+          data_type: varchar(150)
+          data_tests:
+            - not_null
+        - name: suffix
+          description: "Sufixo"
+          data_type: varchar(5)
+        - name: emailpromotion
+          description: "Promoção por e-mail"
+          data_type: number(38)
+        - name: demographics
+          description: "Dados demográficos"
+          data_type: varchar(1000)
+        - name: rowguid
+          description: "GUID da linha"
+          data_type: varchar(38)
+        - name: modifieddate
+          description: "Data da última modificação"
+          data_type: date
