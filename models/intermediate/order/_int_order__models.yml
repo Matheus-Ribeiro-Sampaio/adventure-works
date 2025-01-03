@@ -84,9 +84,6 @@ models:
         - name: totaldue
           description: "Total devido"
           data_type: float
-        - name: comment
-          description: "Comentário"
-          data_type: number(38)
         - name: rowguid
           description: "GUID da linha"
           data_type: varchar(38)

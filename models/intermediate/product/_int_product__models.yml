@@ -1,0 +1,87 @@
+version: 1
+
+models:
+  - name: int_product
+    description: "Tabela de produtos"
+    config:
+      tags: 
+        - pedido
+        - detalhe
+    columns:
+      - name: productid
+        description: "ID do produto"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: name
+        description: "Nome do produto"
+        data_type: varchar(50)
+        data_tests:
+            - not_null
+      - name: productnumber
+        description: "Número do produto"
+        data_type: varchar(12)
+      - name: makeflag
+        description: "Indicador de fabricação"
+        data_type: boolean
+      - name: finishedgoodsflag
+        description: "Indicador de produtos acabados"
+        data_type: boolean
+      - name: color
+        description: "Cor do produto"
+        data_type: varchar(30)
+      - name: safetystocklevel
+        description: "Nível de estoque de segurança"
+        data_type: number(38)
+      - name: reorderpoint
+        description: "Ponto de reposição"
+        data_type: number(38)
+      - name: standardcost
+        description: "Custo padrão"
+        data_type: float
+      - name: listprice
+        description: "Preço de lista"
+        data_type: float
+      - name: size
+        description: "Tamanho do produto"
+        data_type: varchar(4)
+      - name: sizeunitmeasurecode
+        description: "Código da unidade de medida do tamanho"
+        data_type: varchar(5)
+      - name: weightunitmeasurecode
+        description: "Código da unidade de medida do peso"
+        data_type: varchar(5)
+      - name: weight
+        description: "Peso do produto"
+        data_type: float
+      - name: daystomanufacture
+        description: "Dias para fabricar"
+        data_type: number(38)
+      - name: productline
+        description: "Linha de produto"
+        data_type: varchar(4)
+      - name: class
+        description: "Classe do produto"
+        data_type: varchar(4)
+      - name: style
+        description: "Estilo do produto"
+        data_type: varchar(4)
+      - name: productsubcategoryid
+        description: "ID da subcategoria do produto"
+        data_type: number(38)
+      - name: productmodelid
+        description: "ID do modelo do produto"
+        data_type: number(38)
+      - name: sellstartdate
+        description: "Data de início das vendas"
+        data_type: date
+      - name: sellenddate
+        description: "Data de término das vendas"
+        data_type: date
+      - name: rowguid
+        description: "GUID da linha"
+        data_type: varchar(38)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: date
