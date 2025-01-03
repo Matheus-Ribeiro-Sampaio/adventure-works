@@ -1,0 +1,190 @@
+version: 1
+
+sources:
+  - name: adventure_works
+    schema: raw_adventure_works
+    tables:
+      - name: salesorderheader
+        description: "Tabela de pedidos"
+        tags: 
+          - pedido
+        columns:
+            - name: salesorderid
+              description: "ID do pedido"
+              data_type: number(38)
+            - name: revisionnumber
+              description: "Número da revisão"
+              data_type: number(38)
+            - name: orderdate
+              description: "Data do pedido"
+              data_type: varchar(16777216)
+            - name: duedate
+              description: "Data de vencimento"
+              data_type: varchar(16777216)
+            - name: shipdate
+              description: "Data de envio"
+              data_type: varchar(16777216)
+            - name: status
+              description: "Status do pedido"
+              data_type: number(38)
+            - name: onlineorderflag
+              description: "Indica se é um pedido online"
+              data_type: boolean
+            - name: purchaseordernumber
+              description: "Número do pedido de compra"
+              data_type: varchar(16777216)
+            - name: accountnumber
+              description: "Número da conta"
+              data_type: varchar(16777216)
+            - name: customerid
+              description: "ID do cliente"
+              data_type: number(38)
+            - name: salespersonid
+              description: "ID do vendedor"
+              data_type: number(38)
+            - name: territoryid
+              description: "ID do território"
+              data_type: number(38)
+            - name: billtoaddressid
+              description: "ID do endereço de cobrança"
+              data_type: number(38)
+            - name: shiptoaddressid
+              description: "ID do endereço de envio"
+              data_type: number(38)
+            - name: shipmethodid
+              description: "ID do método de envio"
+              data_type: number(38)
+            - name: creditcardid
+              description: "ID do cartão de crédito"
+              data_type: number(38)
+            - name: creditcardapprovalcode
+              description: "Código de aprovação do cartão de crédito"
+              data_type: varchar(16777216)
+            - name: currencyrateid
+              description: "ID da taxa de câmbio"
+              data_type: number(38)
+            - name: subtotal
+              description: "Subtotal do pedido"
+              data_type: float
+            - name: taxamt
+              description: "Valor do imposto"
+              data_type: float
+            - name: freight
+              description: "Valor do frete"
+              data_type: float
+            - name: totaldue
+              description: "Total devido"
+              data_type: float
+            - name: comment
+              description: "Comentário"
+              data_type: number(38)
+            - name: rowguid
+              description: "GUID da linha"
+              data_type: varchar(16777216)
+            - name: modifieddate
+              description: "Data da última modificação"
+              data_type: varchar(16777216)
+      - name: customer
+        description: "Tabela de clientes"
+        tags: 
+          - cliente
+        columns:
+            - name: customerid
+              description: "ID do cliente"
+              data_type: number(38)
+            - name: personid
+              description: "ID da pessoa"
+              data_type: number(38)
+            - name: storeid
+              description: "ID da loja"
+              data_type: number(38)
+            - name: territoryid
+              description: "ID do território"
+              data_type: number(38)
+            - name: rowguid
+              description: "GUID da linha"
+              data_type: varchar(16777216)
+            - name: modifieddate
+              description: "Data da última modificação"
+              data_type: varchar(16777216)
+      - name: person
+        description: "Tabela de pessoas"
+        tags: 
+          - pessoa
+          - cliente
+          - vendedor
+        columns:
+            - name: businessentityid
+              description: "ID da pessoa"
+              data_type: number(38)
+            - name: persontype
+              description: "Tipo de pessoa"
+              data_type: varchar(16777216)
+            - name: namestyle
+              description: "Estilo do nome"
+              data_type: boolean
+            - name: title
+              description: "Título"
+              data_type: varchar(16777216)
+            - name: firstname
+              description: "Primeiro nome"
+              data_type: varchar(16777216)
+            - name: middlename
+              description: "Nome do meio"
+              data_type: varchar(16777216)
+            - name: lastname
+              description: "Sobrenome"
+              data_type: varchar(16777216)
+            - name: suffix
+              description: "Sufixo"
+              data_type: varchar(16777216)
+            - name: emailpromotion
+              description: "Promoção por e-mail"
+              data_type: number(38)
+            - name: additionalcontactinfo
+              description: "Informações de contato adicionais"
+              data_type: varchar(16777216)
+            - name: demographics
+              description: "Dados demográficos"
+              data_type: varchar(16777216)
+            - name: rowguid
+              description: "GUID da linha"
+              data_type: varchar(16777216)
+            - name: modifieddate
+              description: "Data da última modificação"
+              data_type: varchar(16777216)
+      - name: salesorderheadersalesreason
+        description: "Tabela de relacionamento entre pedidos e motivo da venda"
+        tags: 
+          - pedido
+          - motivo
+          - venda
+        columns:
+            - name: salesorderid
+              description: "ID do pedido"
+              data_type: number(38)
+            - name: salesreasonid
+              description: "ID do motivo da venda"
+              data_type: number(38)
+            - name: modifieddate
+              description: "Data da última modificação"
+              data_type: varchar(16777216)
+      - name: salesreason
+        description: "Tabela do motivo da venda"
+        tags: 
+          - pedido
+          - motivo
+          - venda
+        columns:
+          - name: salesreasonid
+            description: "ID do motivo da venda"
+            data_type: number(38)
+          - name: name
+            description: "Nome do motivo"
+            data_type: varchar(16777216)
+          - name: reasontype
+            description: "Tipo de motivo"
+            data_type: varchar(16777216)
+          - name: modifieddate
+            description: "Data da última modificação"
+            data_type: varchar(16777216)
