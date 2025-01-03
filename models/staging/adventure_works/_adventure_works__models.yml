@@ -1,7 +1,7 @@
 version: 1
 
 models:
-  - name: salesorderheader
+  - name: stg_adventure_works__salesorderheader
     description: "Tabela de pedidos"
     config:
       tags: 
@@ -93,7 +93,7 @@ models:
         - name: modifieddate
           description: "Data da última modificação"
           data_type: varchar(16777216)
-  - name: customer
+  - name: stg_adventure_works__customer
     description: "Tabela de clientes"
     config:
       tags:  
@@ -120,7 +120,7 @@ models:
         - name: modifieddate
           description: "Data da última modificação"
           data_type: varchar(16777216)
-  - name: person
+  - name: stg_adventure_works__person
     description: "Tabela de pessoas"
     config:
       tags: 
@@ -170,7 +170,7 @@ models:
         - name: modifieddate
           description: "Data da última modificação"
           data_type: varchar(16777216)
-  - name: salesorderheadersalesreason
+  - name: stg_adventure_works__salesorderheadersalesreason
     description: "Tabela de relacionamento entre pedidos e motivo da venda"
     config:
       tags: 
@@ -191,7 +191,7 @@ models:
         - name: modifieddate
           description: "Data da última modificação"
           data_type: varchar(16777216)
-  - name: salesreason
+  - name: stg_adventure_works__salesreason
     description: "Tabela do motivo da venda"
     config:
       tags:
@@ -214,7 +214,7 @@ models:
       - name: modifieddate
         description: "Data da última modificação"
         data_type: varchar(16777216)
-  - name: address
+  - name: stg_adventure_works__address
     description: "Tabela de endereços dos pedidos (endereço de entrega/conta)"
     config:
       tags: 
@@ -256,7 +256,7 @@ models:
       - name: modifieddate
         description: "Data da última modificação"
         data_type: varchar(16777216)
-  - name: stateprovince
+  - name: stg_adventure_works__stateprovince
     description: "Tabela de estados/províncias dos endereços"
     config:
       tags: 
@@ -293,7 +293,7 @@ models:
       - name: modifieddate
         description: "Data da última modificação"
         data_type: varchar(16777216)
-  - name: countryregion
+  - name: stg_adventure_works__countryregion
     description: "Tabela de países/regiões dos endereços"
     config:
       tags:
@@ -313,7 +313,7 @@ models:
       - name: modifieddate
         description: "Data da última modificação"
         data_type: varchar(16777216)
-  - name: salesorderdetail
+  - name: stg_adventure_works__salesorderdetail
     description: "Tabela de detalhes dos pedidos"
     config:
       tags: 
@@ -357,7 +357,7 @@ models:
       - name: modifieddate
         description: "Data da última modificação"
         data_type: varchar(16777216)
-  - name: product
+  - name: stg_adventure_works__product
     description: "Tabela de produtos"
     config:
       tags: 
@@ -444,7 +444,7 @@ models:
       - name: modifieddate
         description: "Data da última modificação"
         data_type: varchar(16777216)
-  - name: creditcard
+  - name: stg_adventure_works__creditcard
     description: "Tabela de cartões de credito"
     config:
       tags: 

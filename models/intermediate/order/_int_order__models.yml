@@ -1,0 +1,162 @@
+version: 1
+
+models:
+  - name: int_sales_order
+    description: "Tabela de pedidos"
+    config:
+      tags: 
+        - pedido
+    columns:
+        - name: salesorderid
+          description: "ID do pedido"
+          data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
+        - name: revisionnumber
+          description: "Número da revisão"
+          data_type: number(38)
+        - name: orderdate
+          description: "Data do pedido"
+          data_type: date
+          data_tests:
+            - not_null
+        - name: duedate
+          description: "Data de vencimento"
+          data_type: date
+        - name: shipdate
+          description: "Data de envio"
+          data_type: date
+        - name: statusid
+          description: "ID do status do pedido"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: onlineorderflag
+          description: "Indica se é um pedido online"
+          data_type: boolean
+        - name: purchaseordernumber
+          description: "Número do pedido de compra"
+          data_type: varchar(15)
+        - name: accountnumber
+          description: "Número da conta"
+          data_type: varchar(16)
+        - name: customerid
+          description: "ID do cliente"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: salespersonid
+          description: "ID do vendedor"
+          data_type: number(38)
+        - name: territoryid
+          description: "ID do território"
+          data_type: number(38)
+        - name: billtoaddressid
+          description: "ID do endereço de cobrança"
+          data_type: number(38)
+        - name: shiptoaddressid
+          description: "ID do endereço de envio"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: shipmethodid
+          description: "ID do método de envio"
+          data_type: number(38)
+        - name: creditcardid
+          description: "ID do cartão de crédito"
+          data_type: number(38)
+        - name: creditcardapprovalcode
+          description: "Código de aprovação do cartão de crédito"
+          data_type: varchar(17)
+        - name: currencyrateid
+          description: "ID da taxa de câmbio"
+          data_type: number(38)
+        - name: subtotal
+          description: "Subtotal do pedido"
+          data_type: float
+        - name: taxamt
+          description: "Valor do imposto"
+          data_type: float
+        - name: freight
+          description: "Valor do frete"
+          data_type: float
+        - name: totaldue
+          description: "Total devido"
+          data_type: float
+        - name: comment
+          description: "Comentário"
+          data_type: number(38)
+        - name: rowguid
+          description: "GUID da linha"
+          data_type: varchar(38)
+        - name: modifieddate
+          description: "Data da última modificação"
+          data_type: date
+  - name: int_sales_reason
+    description: "Tabela do motivo da venda"
+    config:
+      tags:
+        - pedido
+        - motivo
+        - venda
+    columns:
+      - name: salesreasonid
+        description: "ID do motivo da venda"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: name
+        description: "Nome do motivo"
+        data_type: varchar(50)
+      - name: reasontype
+        description: "Tipo de motivo"
+        data_type: varchar(50)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: date
+  - name: int_sales_detail
+    description: "Tabela de detalhes dos pedidos"
+    config:
+      tags: 
+        - pedido
+        - detalhe
+    columns:
+      - name: salesorderid
+        description: "ID do pedido"
+        data_type: number(38)
+        data_tests:
+            - not_null
+      - name: salesorderdetailid
+        description: "ID do detalhe do pedido"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: carriertrackingnumber
+        description: "Número de rastreamento do transportador"
+        data_type: varchar(15)
+      - name: orderqty
+        description: "Quantidade do pedido"
+        data_type: number(38)
+      - name: productid
+        description: "ID do produto"
+        data_type: number(38)
+        data_tests:
+            - not_null
+      - name: specialofferid
+        description: "ID da oferta especial"
+        data_type: number(38)
+      - name: unitprice
+        description: "Preço unitário"
+        data_type: float
+      - name: unitpricediscount
+        description: "Desconto do preço unitário"
+        data_type: float
+      - name: rowguid
+        description: "GUID da linha"
+        data_type: varchar(38)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: date

@@ -1,4 +1,4 @@
--- models/staging/staging/stg_adventure_works__address.sql
+-- models/staging/adventure_works/stg_adventure_works__address.sql
 
 WITH ADDRESS AS (
     SELECT 
@@ -14,4 +14,5 @@ WITH ADDRESS AS (
     FROM 
         {{ source('adventure_works','address')}}
 )
+
 SELECT * FROM ADDRESS

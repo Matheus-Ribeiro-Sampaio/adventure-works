@@ -1,4 +1,4 @@
--- models/staging/staging/stg_adventure_works__creditcard.sql
+-- models/staging/adventure_works/stg_adventure_works__creditcard.sql
 
 WITH CREDITCARD AS (
     SELECT 
@@ -11,4 +11,5 @@ WITH CREDITCARD AS (
     FROM 
         {{ source('adventure_works','creditcard')}}
 )
+
 SELECT * FROM CREDITCARD

@@ -1,4 +1,4 @@
--- models/staging/staging/stg_adventure_works__product.sql
+-- models/staging/adventure_works/stg_adventure_works__product.sql
 
 WITH PRODUCT AS (
     SELECT 
@@ -30,4 +30,5 @@ WITH PRODUCT AS (
     FROM 
         {{ source('adventure_works','product')}}
 )
+
 SELECT * FROM PRODUCT

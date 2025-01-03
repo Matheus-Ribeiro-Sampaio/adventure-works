@@ -1,4 +1,4 @@
--- models/staging/staging/stg_adventure_works__person.sql
+-- models/staging/adventure_works/stg_adventure_works__person.sql
 
 WITH PERSON AS (
     SELECT 
@@ -18,4 +18,5 @@ WITH PERSON AS (
     FROM 
         {{ source('adventure_works','person')}}
 )
+
 SELECT * FROM PERSON

@@ -1,6 +1,6 @@
--- models/staging/adventure_works/stg_adventure_works__salesorderdetail.sql
+-- models/intermediate/order/int_sales_detail.sql
 
-WITH SALESORDERDETAIL AS (
+WITH SALES_DETAIL AS (
     SELECT 
         SALESORDERID, 
         SALESORDERDETAILID, 
@@ -11,9 +11,9 @@ WITH SALESORDERDETAIL AS (
         UNITPRICE, 
         UNITPRICEDISCOUNT, 
         ROWGUID, 
-        MODIFIEDDATE 
+        CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE
     FROM 
-        {{ source('adventure_works','salesorderdetail')}}
+        {{ ref('stg_adventure_works__salesorderdetail') }}
 )
 
-SELECT * FROM SALESORDERDETAIL
+SELECT * FROM SALES_DETAIL

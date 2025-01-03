@@ -1,4 +1,4 @@
--- models/staging/staging/stg_adventure_works__stateprovince.sql
+-- models/staging/adventure_works/stg_adventure_works__stateprovince.sql
 
 WITH STATEPROVINCE AS (
     SELECT 
@@ -13,4 +13,5 @@ WITH STATEPROVINCE AS (
     FROM 
         {{ source('adventure_works','stateprovince')}}
 )
+
 SELECT * FROM STATEPROVINCE
