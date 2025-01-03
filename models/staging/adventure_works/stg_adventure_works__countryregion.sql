@@ -1,4 +1,4 @@
--- models/staging/staging/stg_adventure_works__countryregion.sql
+-- models/staging/adventure_works/stg_adventure_works__countryregion.sql
 
 WITH COUNTRYREGION AS (
     SELECT 
@@ -8,4 +8,5 @@ WITH COUNTRYREGION AS (
     FROM 
         {{ source('adventure_works','countryregion')}}
 )
+
 SELECT * FROM COUNTRYREGION

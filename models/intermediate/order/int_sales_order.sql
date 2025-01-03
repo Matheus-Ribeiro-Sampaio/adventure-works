@@ -1,13 +1,13 @@
--- models/staging/adventure_works/stg_adventure_works__salesorderheader.sql
+-- models/intermediate/order/int_sales_order.sql
 
-WITH SALESORDERHEADER AS (
+WITH SALES_ORDER AS (
     SELECT 
         SALESORDERID, 
         REVISIONNUMBER, 
-        ORDERDATE, 
-        DUEDATE, 
-        SHIPDATE, 
-        STATUS, 
+        CAST(ORDERDATE AS DATE) AS ORDERDATE, 
+        CAST(DUEDATE AS DATE) AS DUEDATE, 
+        CAST(SHIPDATE AS DATE) AS SHIPDATE,
+        STATUS AS STATUSID, 
         ONLINEORDERFLAG, 
         PURCHASEORDERNUMBER, 
         ACCOUNTNUMBER, 
@@ -24,11 +24,11 @@ WITH SALESORDERHEADER AS (
         TAXAMT, 
         FREIGHT, 
         TOTALDUE, 
-        COMMENT, 
+        -- COMMENT, --CAMPO DESCARTADO, SOMENTE CONTÉM VALORES NULOS 
         ROWGUID, 
-        MODIFIEDDATE 
+        CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE  
     FROM 
-        {{ source('adventure_works','salesorderheader')}}
+        {{ ref('stg_adventure_works__salesorderheader') }}
 )
 
-SELECT * FROM SALESORDERHEADER
+SELECT * FROM SALES_ORDER

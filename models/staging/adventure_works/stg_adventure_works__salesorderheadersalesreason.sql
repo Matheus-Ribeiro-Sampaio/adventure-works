@@ -1,4 +1,4 @@
--- models/staging/staging/stg_adventure_works__salesorderheadersalesreason.sql
+-- models/staging/adventure_works/stg_adventure_works__salesorderheadersalesreason.sql
 
 WITH SALESORDERHEADERSALESREASON AS (
     SELECT 
@@ -8,4 +8,5 @@ WITH SALESORDERHEADERSALESREASON AS (
     FROM 
         {{ source('adventure_works','salesorderheadersalesreason')}}
 )
+
 SELECT * FROM SALESORDERHEADERSALESREASON
