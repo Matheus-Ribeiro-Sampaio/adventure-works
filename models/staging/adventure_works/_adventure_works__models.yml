@@ -176,7 +176,6 @@ models:
       tags: 
         - pedido
         - motivo
-        - venda
     columns:
         - name: salesorderid
           description: "ID do pedido"
@@ -197,7 +196,6 @@ models:
       tags:
         - pedido
         - motivo
-        - venda
     columns:
       - name: salesreasonid
         description: "ID do motivo da venda"

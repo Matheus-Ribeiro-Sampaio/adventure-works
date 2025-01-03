@@ -12,9 +12,9 @@ WITH SALESPERSON AS (
         PERSON.ROWGUID, 
         PERSON.MODIFIEDDATE
     FROM 
-        {{ ref('int_person') }} AS PERSON
-    INNER JOIN {{ ref('int_sales_order') }} AS SALES_ORDER
-        ON SALES_ORDER.SALESPERSONID = PERSON.PERSONID
+        {{ ref('int_sales_order') }} AS SALES_ORDER
+    INNER JOIN {{ ref('int_person') }} AS PERSON
+        ON PERSON.PERSONID = SALES_ORDER.SALESPERSONID
 )
 
 SELECT * FROM SALESPERSON
