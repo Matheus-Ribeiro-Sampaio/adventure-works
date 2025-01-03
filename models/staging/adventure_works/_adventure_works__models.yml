@@ -10,12 +10,17 @@ models:
         - name: salesorderid
           description: "ID do pedido"
           data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
         - name: revisionnumber
           description: "Número da revisão"
           data_type: number(38)
         - name: orderdate
           description: "Data do pedido"
           data_type: varchar(16777216)
+          data_tests:
+            - not_null
         - name: duedate
           description: "Data de vencimento"
           data_type: varchar(16777216)
@@ -25,6 +30,8 @@ models:
         - name: status
           description: "Status do pedido"
           data_type: number(38)
+          data_tests:
+            - not_null
         - name: onlineorderflag
           description: "Indica se é um pedido online"
           data_type: boolean
@@ -37,6 +44,8 @@ models:
         - name: customerid
           description: "ID do cliente"
           data_type: number(38)
+          data_tests:
+            - not_null
         - name: salespersonid
           description: "ID do vendedor"
           data_type: number(38)
@@ -49,6 +58,8 @@ models:
         - name: shiptoaddressid
           description: "ID do endereço de envio"
           data_type: number(38)
+          data_tests:
+            - not_null
         - name: shipmethodid
           description: "ID do método de envio"
           data_type: number(38)
@@ -91,6 +102,9 @@ models:
         - name: customerid
           description: "ID do cliente"
           data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
         - name: personid
           description: "ID da pessoa"
           data_type: number(38)
@@ -117,6 +131,9 @@ models:
         - name: businessentityid
           description: "ID da pessoa"
           data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
         - name: persontype
           description: "Tipo de pessoa"
           data_type: varchar(16777216)
@@ -164,9 +181,13 @@ models:
         - name: salesorderid
           description: "ID do pedido"
           data_type: number(38)
+          data_tests:
+            - not_null
         - name: salesreasonid
           description: "ID do motivo da venda"
           data_type: number(38)
+          data_tests:
+            - not_null
         - name: modifieddate
           description: "Data da última modificação"
           data_type: varchar(16777216)
@@ -181,6 +202,9 @@ models:
       - name: salesreasonid
         description: "ID do motivo da venda"
         data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
       - name: name
         description: "Nome do motivo"
         data_type: varchar(16777216)
@@ -201,6 +225,9 @@ models:
       - name: addressid
         description: "ID do endereço"
         data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
       - name: addressline1
         description: "Linha 1 do endereço"
         data_type: varchar(16777216)
@@ -210,9 +237,13 @@ models:
       - name: city
         description: "Cidade"
         data_type: varchar(16777216)
+        data_tests:
+            - not_null
       - name: stateprovinceid
         description: "ID do estado ou província"
         data_type: number(38)
+        data_tests:
+            - not_null
       - name: postalcode
         description: "Código postal"
         data_type: varchar(16777216)
@@ -234,18 +265,25 @@ models:
       - name: stateprovinceid
         description: "ID do estado ou província"
         data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
       - name: stateprovincecode
         description: "Código do estado ou província"
         data_type: varchar(16777216)
       - name: countryregioncode
         description: "Código do país ou região"
         data_type: varchar(16777216)
+        data_tests:
+            - not_null
       - name: isonlystateprovinceflag
         description: "Indicador de único estado ou província"
         data_type: boolean
       - name: name
         description: "Nome do estado ou província"
         data_type: varchar(16777216)
+        data_tests:
+            - not_null
       - name: territoryid
         description: "ID do território"
         data_type: number(38)
@@ -264,9 +302,14 @@ models:
       - name: countryregioncode
         description: "Código do país ou região"
         data_type: varchar(16777216)
+        data_tests:
+            - unique
+            - not_null
       - name: name
         description: "Nome do país ou região"
         data_type: varchar(16777216)
+        data_tests:
+            - not_null
       - name: modifieddate
         description: "Data da última modificação"
         data_type: varchar(16777216)
@@ -280,9 +323,14 @@ models:
       - name: salesorderid
         description: "ID do pedido"
         data_type: number(38)
+        data_tests:
+            - not_null
       - name: salesorderdetailid
         description: "ID do detalhe do pedido"
         data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
       - name: carriertrackingnumber
         description: "Número de rastreamento do transportador"
         data_type: varchar(16777216)
@@ -292,6 +340,8 @@ models:
       - name: productid
         description: "ID do produto"
         data_type: number(38)
+        data_tests:
+            - not_null
       - name: specialofferid
         description: "ID da oferta especial"
         data_type: number(38)
@@ -317,9 +367,14 @@ models:
       - name: productid
         description: "ID do produto"
         data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
       - name: name
         description: "Nome do produto"
         data_type: varchar(16777216)
+        data_tests:
+            - not_null
       - name: productnumber
         description: "Número do produto"
         data_type: varchar(16777216)
@@ -399,9 +454,14 @@ models:
       - name: creditcardid
         description: "ID do cartão de crédito"
         data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
       - name: cardtype
         description: "Tipo de cartão"
         data_type: varchar(16777216)
+        data_tests:
+            - not_null
       - name: cardnumber
         description: "Número do cartão"
         data_type: number(38)
