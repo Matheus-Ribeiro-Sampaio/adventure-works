@@ -52,11 +52,214 @@ models:
         - name: totaldue
           description: "Total devido"
           data_type: float
-        - name: modifieddate
-          description: "Data da última modificação"
-          data_type: date
+        - name: productid
+          description: "ID do produto"
+          data_type: number(38)
+          data_tests:
+              - not_null
+  - name: dom_order_reason
+    description: "Tabela dimensão do motivo da venda"
+    config:
+      tags:
+        - pedido
+        - motivo
+        - venda
+        - dimensao
+    columns:
+      - name: salesorderid
+        description: "ID do pedido"
+        data_type: number(38)
+        data_tests:
+          - not_null      
+      - name: salesreasonid
+        description: "ID do motivo da venda"
+        data_type: number(38)
+        data_tests:
+            - not_null
+      - name: reason
+        description: "Nome do motivo"
+        data_type: varchar(50)
+      - name: reasontype
+        description: "Tipo de motivo"
+        data_type: varchar(50)
+  - name: dim_order_detail
+    description: "Tabela dimensão de detalhes dos pedidos"
+    config:
+      tags: 
+        - pedido
+        - detalhe
+        - dimensao
+    columns:
+      - name: salesorderid
+        description: "ID do pedido"
+        data_type: number(38)
+        data_tests:
+            - not_null
+      - name: salesorderdetailid
+        description: "ID do detalhe do pedido"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: orderqty
+        description: "Quantidade do pedido"
+        data_type: number(38)
+      - name: unitprice
+        description: "Preço unitário"
+        data_type: float
+      - name: unitpricediscount
+        description: "Desconto do preço unitário"
+        data_type: float
+  - name: dim_order_status
+    description: "Tabela do status do pedido"
+    config:
+      tags:
+        - pedido
+        - status
+        - dimensao
+    columns:
+      - name: statusid
+        description: "ID do status do pedido"
+        data_type: number(38)
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        description: "Descrição do status"
+        data_type: varchar(15)
+        data_tests:
+          - not_null
+  - name: dim_product
+    description: "Tabela didemensão de produtos"
+    config:
+      tags: 
+        - produto
+        - dimensao
+    columns:
+      - name: productid
+        description: "ID do produto"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: product
+        description: "Nome do produto"
+        data_type: varchar(50)
+        data_tests:
+            - not_null
+      - name: class
+        description: "Classe do produto"
+        data_type: varchar(4)
+      - name: style
+        description: "Estilo do produto"
+        data_type: varchar(4)
+  - name: dim_customer
+    description: "Tabela de clientes"
+    config:
+      tags: 
+        - pessoa
+        - cliente
+        - dimensao
+    columns:
+        - name: customerid
+          description: "ID do cliente"
+          data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
+        - name: customerpersonid
+          description: "ID da pessoa"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: customer
+          description: "Nome e sobrenome do cliente"
+          data_type: varchar(150)
+          data_tests:
+            - not_null
+  - name: dim_salesperson
+    description: "Tabela dimensão de vendedores"
+    config:
+      tags: 
+        - pessoa
+        - vendedor
+        - dimensao
+    columns:
+        - name: salespersonid
+          description: "ID da pessoa"
+          data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
+        - name: salesperson
+          description: "Nome e sobrenome do vendedor"
+          data_type: varchar(150)
+          data_tests:
+            - not_null
+  - name: dim_ship_address
+    description: "Tabela dimensão de endereços"
+    config:
+      tags: 
+        - endereco
+        - entrega
+        - conta
+        - dimensao
+    columns:
+      - name: shiptoaddressid
+        description: "ID do endereço"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: city
+        description: "Cidade"
+        data_type: varchar(80)
+        data_tests:
+            - not_null
+      - name: stateprovinceid
+        description: "ID do estado ou província"
+        data_type: number(38)
+        data_tests:
+            - not_null
+      - name: stateprovincecode
+        description: "Código do estado ou província"
+        data_type: number(5)
+      - name: countryregioncode
+        description: "Código do país ou região"
+        data_type: varchar(3)
+        data_tests:
+            - not_null
+      - name: state_province
+        description: "Nome do estado ou província"
+        data_type: varchar(80)
+        data_tests:
+            - not_null
+      - name: country_region
+        description: "Nome do país ou região"
+        data_type: varchar(80)
+        data_tests:
+            - not_null
+  - name: dim_credit_card
+    description: "Tabela dimensão de cartões de credito"
+    config:
+      tags: 
+        - cartao
+        - credito
+        - dimensao
+    columns:
+      - name: creditcardid
+        description: "ID do cartão de crédito"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: cardtype
+        description: "Tipo de cartão"
+        data_type: varchar(20)
+        data_tests:
+            - not_null
   - name: dim_order_date
-    description: "Tabela de data"
+    description: "Tabela dimensão de data"
     config:
       tags: 
         - pedido

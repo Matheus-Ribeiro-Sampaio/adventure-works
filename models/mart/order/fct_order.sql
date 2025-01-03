@@ -12,8 +12,8 @@ WITH FCT_ORDER AS (
         SUBTOTAL, 
         TAXAMT, 
         FREIGHT, 
-        TOTALDUE, 
-        MODIFIEDDATE 
+        TOTALDUE,
+        PRODUCTID
     FROM 
         {{ ref('int_sales_order') }}
 )

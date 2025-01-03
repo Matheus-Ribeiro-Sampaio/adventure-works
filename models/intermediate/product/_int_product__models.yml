@@ -5,8 +5,7 @@ models:
     description: "Tabela de produtos"
     config:
       tags: 
-        - pedido
-        - detalhe
+        - produto
     columns:
       - name: productid
         description: "ID do produto"
