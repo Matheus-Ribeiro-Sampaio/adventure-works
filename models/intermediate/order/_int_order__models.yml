@@ -161,3 +161,21 @@ models:
       - name: modifieddate
         description: "Data da última modificação"
         data_type: date
+  - name: int_sales_status
+    description: "Tabela do status do pedido"
+    config:
+      tags:
+        - pedido
+        - status
+    columns:
+      - name: statusid
+        description: "ID do status do pedido"
+        data_type: number(38)
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        description: "Descrição do status"
+        data_type: varchar(15)
+        data_tests:
+          - not_null
