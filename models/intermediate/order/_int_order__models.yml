@@ -90,6 +90,11 @@ models:
         - name: modifieddate
           description: "Data da última modificação"
           data_type: date
+        - name: productid
+          description: "ID do produto"
+          data_type: number(38)
+          data_tests:
+              - not_null
   - name: int_sales_reason
     description: "Tabela do motivo da venda"
     config:
