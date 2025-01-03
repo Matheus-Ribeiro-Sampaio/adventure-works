@@ -1,0 +1,25 @@
+version: 1
+
+models:
+  - name: int_date
+    description: "Tabela de data"
+    config:
+      tags: 
+        - pedido
+        - data
+    columns:
+        - name: date
+          description: "Data"
+          data_type: date
+          data_tests:
+            - unique
+            - not_null
+        - name: year
+          description: "Ano"
+          data_type: number(4)
+        - name: month_year
+          description: "Mês/Ano"
+          data_type: varchar(7)
+        - name: month
+          description: "Mês"
+          data_type: varchar(9)

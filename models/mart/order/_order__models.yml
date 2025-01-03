@@ -1,0 +1,80 @@
+version: 1
+
+models:
+  - name: fct_order
+    description: "Tabela fato de pedidos"
+    config:
+      tags: 
+        - pedido
+        - fato
+    columns:
+        - name: salesorderid
+          description: "ID do pedido"
+          data_type: number(38)
+          data_tests:
+            - unique
+            - not_null
+        - name: orderdate
+          description: "Data do pedido"
+          data_type: date
+          data_tests:
+            - not_null
+        - name: statusid
+          description: "ID do status do pedido"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: customerid
+          description: "ID do cliente"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: salespersonid
+          description: "ID do vendedor"
+          data_type: number(38)
+        - name: shiptoaddressid
+          description: "ID do endereço de envio"
+          data_type: number(38)
+          data_tests:
+            - not_null
+        - name: creditcardid
+          description: "ID do cartão de crédito"
+          data_type: number(38)
+        - name: subtotal
+          description: "Subtotal do pedido"
+          data_type: float
+        - name: taxamt
+          description: "Valor do imposto"
+          data_type: float
+        - name: freight
+          description: "Valor do frete"
+          data_type: float
+        - name: totaldue
+          description: "Total devido"
+          data_type: float
+        - name: modifieddate
+          description: "Data da última modificação"
+          data_type: date
+  - name: dim_order_date
+    description: "Tabela de data"
+    config:
+      tags: 
+        - pedido
+        - data
+        - dimensao
+    columns:
+        - name: orderdate
+          description: "Data"
+          data_type: date
+          data_tests:
+            - unique
+            - not_null
+        - name: year
+          description: "Ano"
+          data_type: number(4)
+        - name: month_year
+          description: "Mês/Ano"
+          data_type: varchar(7)
+        - name: month
+          description: "Mês"
+          data_type: varchar(9)
