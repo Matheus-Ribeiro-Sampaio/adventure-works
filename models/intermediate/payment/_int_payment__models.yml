@@ -1,0 +1,33 @@
+version: 1
+
+models:
+  - name: int_credit_card
+    description: "Tabela de cartões de credito"
+    config:
+      tags: 
+        - cartao
+        - credito
+    columns:
+      - name: creditcardid
+        description: "ID do cartão de crédito"
+        data_type: number(38)
+        data_tests:
+            - unique
+            - not_null
+      - name: cardtype
+        description: "Tipo de cartão"
+        data_type: varchar(20)
+        data_tests:
+            - not_null
+      - name: cardnumber
+        description: "Número do cartão"
+        data_type: number(38)
+      - name: expmonth
+        description: "Mês de expiração"
+        data_type: number(38)
+      - name: expyear
+        description: "Ano de expiração"
+        data_type: number(38)
+      - name: modifieddate
+        description: "Data da última modificação"
+        data_type: date
