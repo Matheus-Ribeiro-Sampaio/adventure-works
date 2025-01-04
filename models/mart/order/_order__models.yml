@@ -2,25 +2,26 @@ version: 1
 
 models:
   - name: fct_order
-    description: "Tabela fato de pedidos"
+    description: "Tabela fato de vendas"
     config:
       tags: 
         - pedido
+        - venda
         - fato
     columns:
         - name: salesorderid
-          description: "ID do pedido"
+          description: "ID da venda"
           data_type: number(38)
           data_tests:
             - unique
             - not_null
-        - name: orderdate
-          description: "Data do pedido"
-          data_type: date
+        - name: orderdateid
+          description: "ID da data da venda"
+          data_type: number(8)
           data_tests:
             - not_null
         - name: statusid
-          description: "ID do status do pedido"
+          description: "ID do status da venda"
           data_type: number(38)
           data_tests:
             - not_null
@@ -41,7 +42,7 @@ models:
           description: "ID do cartão de crédito"
           data_type: number(38)
         - name: subtotal
-          description: "Subtotal do pedido"
+          description: "Subtotal da venda"
           data_type: float
         - name: taxamt
           description: "Valor do imposto"
@@ -57,52 +58,53 @@ models:
           data_type: number(38)
           data_tests:
               - not_null
+        - name: salesreasonid
+          description: "ID do motivo da venda"
+          data_type: number(38)
+          data_tests:
+              - not_null
+        - name: salesorderdetailid
+          description: "ID do detalhe da venda"
+          data_type: number(38)
+          data_tests:
+              - not_null
   - name: dom_order_reason
     description: "Tabela dimensão do motivo da venda"
     config:
       tags:
         - pedido
-        - motivo
         - venda
+        - motivo
         - dimensao
-    columns:
-      - name: salesorderid
-        description: "ID do pedido"
-        data_type: number(38)
-        data_tests:
-          - not_null      
+    columns:    
       - name: salesreasonid
         description: "ID do motivo da venda"
         data_type: number(38)
         data_tests:
             - not_null
       - name: reason
-        description: "Nome do motivo"
+        description: "Descrição do motivo da venda"
         data_type: varchar(50)
       - name: reasontype
-        description: "Tipo de motivo"
+        description: "Tipo de motivo da venda"
         data_type: varchar(50)
   - name: dim_order_detail
-    description: "Tabela dimensão de detalhes dos pedidos"
+    description: "Tabela dimensão de detalhes das vendas"
     config:
       tags: 
         - pedido
+        - venda
         - detalhe
         - dimensao
     columns:
-      - name: salesorderid
-        description: "ID do pedido"
-        data_type: number(38)
-        data_tests:
-            - not_null
       - name: salesorderdetailid
-        description: "ID do detalhe do pedido"
+        description: "ID do detalhe da venda"
         data_type: number(38)
         data_tests:
             - unique
             - not_null
       - name: orderqty
-        description: "Quantidade do pedido"
+        description: "Quantidade de itens"
         data_type: number(38)
       - name: unitprice
         description: "Preço unitário"
@@ -111,21 +113,22 @@ models:
         description: "Desconto do preço unitário"
         data_type: float
   - name: dim_order_status
-    description: "Tabela do status do pedido"
+    description: "Tabela do status da venda"
     config:
       tags:
         - pedido
+        - venda
         - status
         - dimensao
     columns:
       - name: statusid
-        description: "ID do status do pedido"
+        description: "ID do status da venda"
         data_type: number(38)
         data_tests:
           - unique
           - not_null
       - name: status
-        description: "Descrição do status"
+        description: "Descrição do status da venda"
         data_type: varchar(15)
         data_tests:
           - not_null
@@ -166,11 +169,6 @@ models:
           data_type: number(38)
           data_tests:
             - unique
-            - not_null
-        - name: customerpersonid
-          description: "ID da pessoa"
-          data_type: number(38)
-          data_tests:
             - not_null
         - name: customer
           description: "Nome e sobrenome do cliente"
@@ -216,19 +214,6 @@ models:
         data_type: varchar(80)
         data_tests:
             - not_null
-      - name: stateprovinceid
-        description: "ID do estado ou província"
-        data_type: number(38)
-        data_tests:
-            - not_null
-      - name: stateprovincecode
-        description: "Código do estado ou província"
-        data_type: number(5)
-      - name: countryregioncode
-        description: "Código do país ou região"
-        data_type: varchar(3)
-        data_tests:
-            - not_null
       - name: state_province
         description: "Nome do estado ou província"
         data_type: varchar(80)
@@ -263,14 +248,20 @@ models:
     config:
       tags: 
         - pedido
+        - venda
         - data
         - dimensao
     columns:
+        - name: orderdateid
+          description: "ID da data da venda"
+          data_type: number(8)
+          data_tests:
+            - unique
+            - not_null
         - name: orderdate
           description: "Data"
           data_type: date
           data_tests:
-            - unique
             - not_null
         - name: year
           description: "Ano"

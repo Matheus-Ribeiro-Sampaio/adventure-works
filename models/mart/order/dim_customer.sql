@@ -3,7 +3,6 @@
 WITH DIM_CUSTOMER AS (
     SELECT 
         CUSTOMERID, 
-        PERSONID AS CUSTOMERPERSONID, 
         NAME AS CUSTOMER,
     FROM 
         {{ ref('int_customer') }}

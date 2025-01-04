@@ -2,7 +2,6 @@
 
 WITH DIM_ORDER_DETAIL AS (
     SELECT 
-        SALESORDERID, 
         SALESORDERDETAILID, 
         ORDERQTY, 
         UNITPRICE, 

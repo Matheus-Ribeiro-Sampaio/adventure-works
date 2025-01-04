@@ -2,13 +2,14 @@ version: 1
 
 models:
   - name: int_sales_order
-    description: "Tabela de pedidos"
+    description: "Tabela de vendas"
     config:
       tags: 
         - pedido
+        - venda
     columns:
         - name: salesorderid
-          description: "ID do pedido"
+          description: "ID da venda"
           data_type: number(38)
           data_tests:
             - unique
@@ -17,8 +18,13 @@ models:
           description: "Número da revisão"
           data_type: number(38)
         - name: orderdate
-          description: "Data do pedido"
+          description: "Data da venda"
           data_type: date
+          data_tests:
+            - not_null
+        - name: orderdateid
+          description: "ID da data da venda"
+          data_type: number(8)
           data_tests:
             - not_null
         - name: duedate
@@ -28,12 +34,12 @@ models:
           description: "Data de envio"
           data_type: date
         - name: statusid
-          description: "ID do status do pedido"
+          description: "ID do status da venda"
           data_type: number(38)
           data_tests:
             - not_null
         - name: onlineorderflag
-          description: "Indica se é um pedido online"
+          description: "Indica se é uma venda online"
           data_type: boolean
         - name: purchaseordernumber
           description: "Número do pedido de compra"
@@ -73,7 +79,7 @@ models:
           description: "ID da taxa de câmbio"
           data_type: number(38)
         - name: subtotal
-          description: "Subtotal do pedido"
+          description: "Subtotal da venda"
           data_type: float
         - name: taxamt
           description: "Valor do imposto"
@@ -88,10 +94,20 @@ models:
           description: "GUID da linha"
           data_type: varchar(38)
         - name: modifieddate
-          description: "Data da última modificação"
+          description: "Data da última modificação do registro"
           data_type: date
         - name: productid
           description: "ID do produto"
+          data_type: number(38)
+          data_tests:
+              - not_null
+        - name: salesreasonid
+          description: "ID do motivo da venda"
+          data_type: number(38)
+          data_tests:
+              - not_null
+        - name: salesorderdetailid
+          description: "ID do detalhe da venda"
           data_type: number(38)
           data_tests:
               - not_null
@@ -100,11 +116,11 @@ models:
     config:
       tags:
         - pedido
-        - motivo
         - venda
+        - motivo
     columns:
       - name: salesorderid
-        description: "ID do pedido"
+        description: "ID da venda"
         data_type: number(38)
         data_tests:
           - not_null      
@@ -114,28 +130,29 @@ models:
         data_tests:
             - not_null
       - name: name
-        description: "Nome do motivo"
+        description: "Descrição do motivo da venda"
         data_type: varchar(50)
       - name: reasontype
-        description: "Tipo de motivo"
+        description: "Tipo de motivo da venda"
         data_type: varchar(50)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: date
   - name: int_sales_detail
-    description: "Tabela de detalhes dos pedidos"
+    description: "Tabela de detalhes das vendas"
     config:
       tags: 
         - pedido
+        - venda
         - detalhe
     columns:
       - name: salesorderid
-        description: "ID do pedido"
+        description: "ID da venda"
         data_type: number(38)
         data_tests:
             - not_null
       - name: salesorderdetailid
-        description: "ID do detalhe do pedido"
+        description: "ID do detalhe da venda"
         data_type: number(38)
         data_tests:
             - unique
@@ -144,7 +161,7 @@ models:
         description: "Número de rastreamento do transportador"
         data_type: varchar(15)
       - name: orderqty
-        description: "Quantidade do pedido"
+        description: "Quantidade de itens"
         data_type: number(38)
       - name: productid
         description: "ID do produto"
@@ -167,20 +184,21 @@ models:
         description: "Data da última modificação"
         data_type: date
   - name: int_sales_status
-    description: "Tabela do status do pedido"
+    description: "Tabela do status da venda"
     config:
       tags:
         - pedido
+        - venda
         - status
     columns:
       - name: statusid
-        description: "ID do status do pedido"
+        description: "ID do status da venda"
         data_type: number(38)
         data_tests:
           - unique
           - not_null
       - name: status
-        description: "Descrição do status"
+        description: "Descrição do status da venda"
         data_type: varchar(15)
         data_tests:
           - not_null

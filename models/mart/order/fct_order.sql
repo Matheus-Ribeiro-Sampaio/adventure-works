@@ -3,7 +3,7 @@
 WITH FCT_ORDER AS (
     SELECT 
         SALESORDERID, 
-        ORDERDATE, 
+        ORDERDATEID, 
         STATUSID, 
         CUSTOMERID, 
         SALESPERSONID,  
@@ -13,7 +13,9 @@ WITH FCT_ORDER AS (
         TAXAMT, 
         FREIGHT, 
         TOTALDUE,
-        PRODUCTID
+        PRODUCTID,
+        SALESREASONID,
+        SALESORDERDETAILID
     FROM 
         {{ ref('int_sales_order') }}
 )

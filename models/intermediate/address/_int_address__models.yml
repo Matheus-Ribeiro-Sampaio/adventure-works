@@ -2,7 +2,7 @@ version: 1
 
 models:
   - name: int_ship_address
-    description: "Tabela de endereços"
+    description: "Tabela de endereços de entrega/conta das vendas"
     config:
       tags: 
         - endereco
@@ -16,10 +16,10 @@ models:
             - unique
             - not_null
       - name: addressline1
-        description: "Linha 1 do endereço"
+        description: "Endereço 1"
         data_type: varchar(150)
       - name: addressline2
-        description: "Linha 2 do endereço"
+        description: "Endereço 2"
         data_type: varchar(150)
       - name: city
         description: "Cidade"
@@ -41,7 +41,7 @@ models:
         description: "GUID da linha da tabela address"
         data_type: varchar(38)
       - name: modifieddateaddres
-        description: "Data da última modificação da tabela address"
+        description: "Data da última modificação do registro da tabela address"
         data_type: date
       - name: stateprovincecode
         description: "Código do estado ou província"
@@ -63,7 +63,7 @@ models:
         description: "GUID da linha da tabela stateprovince"
         data_type: varchar(38)
       - name: modifieddatestateprovince
-        description: "Data da última modificação da tabela stateprovince"
+        description: "Data da última modificação do registro da tabela stateprovince"
         data_type: date
       - name: country_region
         description: "Nome do país ou região"
@@ -71,5 +71,5 @@ models:
         data_tests:
             - not_null
       - name: modifieddatecountryregion
-        description: "Data da última modificação da tabela countryregion"
+        description: "Data da última modificação do registro da tabela countryregion"
         data_type: date
