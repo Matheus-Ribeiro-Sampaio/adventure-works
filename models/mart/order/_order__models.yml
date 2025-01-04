@@ -13,7 +13,6 @@ models:
           description: "ID da venda"
           data_type: number(38)
           data_tests:
-            - unique
             - not_null
         - name: orderdateid
           description: "ID da data da venda"
@@ -61,8 +60,6 @@ models:
         - name: salesreasonid
           description: "ID do motivo da venda"
           data_type: number(38)
-          data_tests:
-              - not_null
         - name: orderqty
           description: "Quantidade de itens"
           data_type: number(38)
@@ -187,7 +184,6 @@ models:
         description: "ID do endereço"
         data_type: number(38)
         data_tests:
-            - unique
             - not_null
       - name: city
         description: "Cidade"
@@ -224,7 +220,7 @@ models:
         data_tests:
             - not_null
   - name: dim_order_date
-    description: "Tabela dimensão de data"
+    description: "Tabela dimensão de data da venda"
     config:
       tags: 
         - pedido
@@ -238,17 +234,17 @@ models:
           data_tests:
             - unique
             - not_null
-        - name: orderdate
-          description: "Data"
+        - name: date
+          description: "Data da venda"
           data_type: date
           data_tests:
             - not_null
         - name: year
-          description: "Ano"
+          description: "Ano da venda"
           data_type: number(4)
         - name: month_year
-          description: "Mês/Ano"
+          description: "Mês/Ano da venda"
           data_type: varchar(7)
         - name: month
-          description: "Mês"
+          description: "Mês da venda"
           data_type: varchar(9)

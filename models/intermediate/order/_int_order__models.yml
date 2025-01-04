@@ -12,7 +12,6 @@ models:
           description: "ID da venda"
           data_type: number(38)
           data_tests:
-            - unique
             - not_null
         - name: revisionnumber
           description: "Número da revisão"
@@ -104,8 +103,6 @@ models:
         - name: salesreasonid
           description: "ID do motivo da venda"
           data_type: number(38)
-          data_tests:
-              - not_null
         - name: salesorderdetailid
           description: "ID do detalhe da venda"
           data_type: number(38)

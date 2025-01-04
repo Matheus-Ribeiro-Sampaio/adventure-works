@@ -8,9 +8,9 @@ WITH SALES_REASON AS (
         CAST(SALES_REASON.REASONTYPE AS VARCHAR(50)) AS REASONTYPE, 
         CAST(SALES_REASON.MODIFIEDDATE AS DATE) AS MODIFIEDDATE
     FROM 
-        {{ ref('stg_adventure_works__salesorderheadersalesreason') }} SALES_ORDER_REASON
-    INNER JOIN {{ ref('stg_adventure_works__salesreason') }} AS SALES_REASON
-        ON SALES_REASON.SALESREASONID = SALES_ORDER_REASON.SALESREASONID
+        {{ ref('stg_adventure_works__salesreason') }} AS SALES_REASON
+    INNER JOIN {{ ref('stg_adventure_works__salesorderheadersalesreason') }} SALES_ORDER_REASON
+        ON SALES_ORDER_REASON.SALESREASONID = SALES_REASON.SALESREASONID
 )
 
 SELECT * FROM SALES_REASON

@@ -1,6 +1,18 @@
 -- models/intermediate/person/int_person.sql
 
-WITH PERSON AS (
+WITH UNKNOWN_PERSON AS (
+    SELECT
+        -1 AS PERSONID, 
+        'UNKN' AS PERSONTYPE, 
+        'UNKNOW' AS TITLE, 
+        'UNKNOWN' AS NAME,
+        'UNKNO' AS SUFFIX, 
+        -1 AS EMAILPROMOTION, 
+        'UNKNOWN' AS DEMOGRAPHICS, 
+        'UNKNOWN' AS ROWGUID, 
+        CAST(CURRENT_DATE AS DATE) AS MODIFIEDDATE 
+),
+PERSON AS (
     SELECT 
         BUSINESSENTITYID AS PERSONID, 
         CAST(PERSONTYPE AS VARCHAR(4)) AS PERSONTYPE, 
@@ -18,6 +30,12 @@ WITH PERSON AS (
         CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE 
     FROM 
         {{ ref('stg_adventure_works__person') }}
+    
+    UNION ALL
+
+    SELECT 
+        *
+    FROM UNKNOWN_PERSON
 )
 
 SELECT * FROM PERSON
