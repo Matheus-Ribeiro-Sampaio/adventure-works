@@ -25,7 +25,7 @@ models:
         description: "Indicador de fabricação"
         data_type: boolean
       - name: finishedgoodsflag
-        description: "Indicador de produtos acabados"
+        description: "Indicador de produto acabado"
         data_type: boolean
       - name: color
         description: "Cor do produto"
@@ -58,7 +58,7 @@ models:
         description: "Dias para fabricar"
         data_type: number(38)
       - name: productline
-        description: "Linha de produto"
+        description: "Linha do produto"
         data_type: varchar(4)
       - name: class
         description: "Classe do produto"
@@ -82,5 +82,5 @@ models:
         description: "GUID da linha"
         data_type: varchar(38)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: date

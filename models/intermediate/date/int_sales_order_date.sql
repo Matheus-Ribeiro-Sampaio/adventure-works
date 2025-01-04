@@ -1,7 +1,8 @@
--- models/intermediate/date/int_date.sql
+-- models/intermediate/date/int_sales_order_date.sql
 
-WITH DATE AS (
-    SELECT 
+WITH SALES_ORDER_DATE AS (
+    SELECT DISTINCT
+        ORDERDATEID, 
         ORDERDATE AS DATE, 
         EXTRACT(YEAR FROM ORDERDATE) AS YEAR,
         TO_CHAR(ORDERDATE, 'MM/YYYY') AS MONTH_YEAR,
@@ -10,4 +11,4 @@ WITH DATE AS (
         {{ ref('int_sales_order') }}
 )
 
-SELECT * FROM DATE
+SELECT * FROM SALES_ORDER_DATE

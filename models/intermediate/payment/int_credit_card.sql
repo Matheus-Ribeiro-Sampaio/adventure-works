@@ -1,6 +1,6 @@
 -- models/intermediate/payment/int_credit_card.sql
 
-WITH CREDITCARD AS (
+WITH CREDIT_CARD AS (
     SELECT 
         CREDITCARDID, 
         CAST(CARDTYPE AS VARCHAR(20)) AS CARDTYPE, 
@@ -12,4 +12,4 @@ WITH CREDITCARD AS (
         {{ ref('stg_adventure_works__creditcard') }}
 )
 
-SELECT * FROM CREDITCARD
+SELECT * FROM CREDIT_CARD

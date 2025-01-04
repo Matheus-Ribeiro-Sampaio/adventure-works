@@ -9,34 +9,34 @@ models:
         - vendedor
     columns:
         - name: salespersonid
-          description: "ID da pessoa"
+          description: "ID da pessoa vendedor"
           data_type: number(38)
           data_tests:
             - unique
             - not_null
         - name: persontype
-          description: "Tipo de pessoa"
+          description: "Tipo de pessoa vendedor"
           data_type: varchar(4)
         - name: title
           description: "Título"
           data_type: varchar(6)
         - name: name
-          description: "Nome e sobrenome"
+          description: "Nome e sobrenome do vendedor"
           data_type: varchar(150)
           data_tests:
             - not_null
         - name: suffix
-          description: "Sufixo"
+          description: "Sufixo do nome do vendedor"
           data_type: varchar(5)
         - name: emailpromotion
-          description: "Promoção por e-mail"
+          description: "Promoção por e-mail do vendedor"
           data_type: number(38)
         - name: demographics
-          description: "Dados demográficos"
+          description: "Dados demográficos do vendedor"
           data_type: varchar(1000)
         - name: rowguid
           description: "GUID da linha"
           data_type: varchar(38)
         - name: modifieddate
-          description: "Data da última modificação"
+          description: "Data da última modificação do registro"
           data_type: date

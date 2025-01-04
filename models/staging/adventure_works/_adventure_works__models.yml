@@ -2,13 +2,14 @@ version: 1
 
 models:
   - name: stg_adventure_works__salesorderheader
-    description: "Tabela de pedidos"
+    description: "Tabela de vendas"
     config:
       tags: 
         - pedido
+        - venda
     columns:
         - name: salesorderid
-          description: "ID do pedido"
+          description: "ID do venda"
           data_type: number(38)
           data_tests:
             - unique
@@ -17,7 +18,7 @@ models:
           description: "Número da revisão"
           data_type: number(38)
         - name: orderdate
-          description: "Data do pedido"
+          description: "Data da venda"
           data_type: varchar(16777216)
           data_tests:
             - not_null
@@ -28,12 +29,12 @@ models:
           description: "Data de envio"
           data_type: varchar(16777216)
         - name: status
-          description: "Status do pedido"
+          description: "Status da venda"
           data_type: number(38)
           data_tests:
             - not_null
         - name: onlineorderflag
-          description: "Indica se é um pedido online"
+          description: "Indica se é uma venda online"
           data_type: boolean
         - name: purchaseordernumber
           description: "Número do pedido de compra"
@@ -73,7 +74,7 @@ models:
           description: "ID da taxa de câmbio"
           data_type: number(38)
         - name: subtotal
-          description: "Subtotal do pedido"
+          description: "Subtotal da venda"
           data_type: float
         - name: taxamt
           description: "Valor do imposto"
@@ -91,7 +92,7 @@ models:
           description: "GUID da linha"
           data_type: varchar(16777216)
         - name: modifieddate
-          description: "Data da última modificação"
+          description: "Data da última modificação do registro"
           data_type: varchar(16777216)
   - name: stg_adventure_works__customer
     description: "Tabela de clientes"
@@ -108,6 +109,8 @@ models:
         - name: personid
           description: "ID da pessoa"
           data_type: number(38)
+          data_tests:
+            - not_null
         - name: storeid
           description: "ID da loja"
           data_type: number(38)
@@ -118,10 +121,10 @@ models:
           description: "GUID da linha"
           data_type: varchar(16777216)
         - name: modifieddate
-          description: "Data da última modificação"
+          description: "Data da última modificação do registro"
           data_type: varchar(16777216)
   - name: stg_adventure_works__person
-    description: "Tabela de pessoas"
+    description: "Tabela de pessoas (clientes/colaboradores)"
     config:
       tags: 
         - pessoa
@@ -168,17 +171,18 @@ models:
           description: "GUID da linha"
           data_type: varchar(16777216)
         - name: modifieddate
-          description: "Data da última modificação"
+          description: "Data da última modificação do registro"
           data_type: varchar(16777216)
   - name: stg_adventure_works__salesorderheadersalesreason
-    description: "Tabela de relacionamento entre pedidos e motivo da venda"
+    description: "Tabela de relacionamento entre venda e motivo da venda"
     config:
       tags: 
         - pedido
+        - venda
         - motivo
     columns:
         - name: salesorderid
-          description: "ID do pedido"
+          description: "ID da venda"
           data_type: number(38)
           data_tests:
             - not_null
@@ -188,13 +192,14 @@ models:
           data_tests:
             - not_null
         - name: modifieddate
-          description: "Data da última modificação"
+          description: "Data da última modificação do registro"
           data_type: varchar(16777216)
   - name: stg_adventure_works__salesreason
     description: "Tabela do motivo da venda"
     config:
       tags:
         - pedido
+        - venda
         - motivo
     columns:
       - name: salesreasonid
@@ -204,16 +209,16 @@ models:
             - unique
             - not_null
       - name: name
-        description: "Nome do motivo"
+        description: "Descrição do motivo da venda"
         data_type: varchar(16777216)
       - name: reasontype
-        description: "Tipo de motivo"
+        description: "Tipo de motivo da venda"
         data_type: varchar(16777216)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: varchar(16777216)
   - name: stg_adventure_works__address
-    description: "Tabela de endereços dos pedidos (endereço de entrega/conta)"
+    description: "Tabela de endereços de entrega/conta das vendas"
     config:
       tags: 
         - endereco
@@ -227,10 +232,10 @@ models:
             - unique
             - not_null
       - name: addressline1
-        description: "Linha 1 do endereço"
+        description: "Endereço 1"
         data_type: varchar(16777216)
       - name: addressline2
-        description: "Linha 2 do endereço"
+        description: "Endereço 2"
         data_type: varchar(16777216)
       - name: city
         description: "Cidade"
@@ -252,7 +257,7 @@ models:
         description: "GUID da linha"
         data_type: varchar(16777216)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: varchar(16777216)
   - name: stg_adventure_works__stateprovince
     description: "Tabela de estados/províncias dos endereços"
@@ -289,7 +294,7 @@ models:
         description: "GUID da linha"
         data_type: varchar(16777216)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: varchar(16777216)
   - name: stg_adventure_works__countryregion
     description: "Tabela de países/regiões dos endereços"
@@ -309,31 +314,32 @@ models:
         data_tests:
             - not_null
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: varchar(16777216)
   - name: stg_adventure_works__salesorderdetail
-    description: "Tabela de detalhes dos pedidos"
+    description: "Tabela de detalhes das vendas"
     config:
       tags: 
         - pedido
+        - venda
         - detalhe
     columns:
       - name: salesorderid
-        description: "ID do pedido"
+        description: "ID da venda"
         data_type: number(38)
         data_tests:
             - not_null
       - name: salesorderdetailid
-        description: "ID do detalhe do pedido"
+        description: "ID do detalhe do venda"
         data_type: number(38)
         data_tests:
             - unique
             - not_null
       - name: carriertrackingnumber
-        description: "Número de rastreamento do transportador"
+        description: "Número de rastreamento da transportadora"
         data_type: varchar(16777216)
       - name: orderqty
-        description: "Quantidade do pedido"
+        description: "Quantidade de itens"
         data_type: number(38)
       - name: productid
         description: "ID do produto"
@@ -353,14 +359,13 @@ models:
         description: "GUID da linha"
         data_type: varchar(16777216)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: varchar(16777216)
   - name: stg_adventure_works__product
     description: "Tabela de produtos"
     config:
       tags: 
-        - pedido
-        - detalhe
+        - produto
     columns:
       - name: productid
         description: "ID do produto"
@@ -413,7 +418,7 @@ models:
         description: "Dias para fabricar"
         data_type: number(38)
       - name: productline
-        description: "Linha de produto"
+        description: "Linha do produto"
         data_type: varchar(16777216)
       - name: class
         description: "Classe do produto"
@@ -440,7 +445,7 @@ models:
         description: "GUID da linha"
         data_type: varchar(16777216)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: varchar(16777216)
   - name: stg_adventure_works__creditcard
     description: "Tabela de cartões de credito"
@@ -470,5 +475,5 @@ models:
         description: "Ano de expiração"
         data_type: number(38)
       - name: modifieddate
-        description: "Data da última modificação"
+        description: "Data da última modificação do registro"
         data_type: varchar(16777216)

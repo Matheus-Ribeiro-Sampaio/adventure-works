@@ -2,12 +2,13 @@
 
 WITH DIM_ORDER_DATE AS (
     SELECT 
-        DATE AS ORDERDATE, 
+        ORDERDATEID,
+        DATE, 
         YEAR,
         MONTH_YEAR,
         MONTH
     FROM 
-        {{ ref('int_date') }}
+        {{ ref('int_sales_order_date') }}
 )
 
 SELECT * FROM DIM_ORDER_DATE

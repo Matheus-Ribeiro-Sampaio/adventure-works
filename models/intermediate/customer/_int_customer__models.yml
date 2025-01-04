@@ -15,7 +15,7 @@ models:
             - unique
             - not_null
         - name: personid
-          description: "ID da pessoa"
+          description: "ID da pessoa cliente"
           data_type: number(38)
           data_tests:
             - not_null
@@ -23,31 +23,31 @@ models:
           description: "GUID da linha da tabela customer"
           data_type: varchar(38)
         - name: modifieddatecustomer
-          description: "Data da última modificação da tabela customer"
+          description: "Data da última modificação do registro da tabela customer"
           data_type: date
         - name: persontype
-          description: "Tipo de pessoa"
+          description: "Tipo de pessoa cliente"
           data_type: varchar(4)
         - name: title
-          description: "Título"
+          description: "Título do cliente"
           data_type: varchar(6)
         - name: name
-          description: "Nome e sobrenome"
+          description: "Nome e sobrenome do cliente"
           data_type: varchar(150)
           data_tests:
             - not_null
         - name: suffix
-          description: "Sufixo"
+          description: "Sufixo do nome do cliente"
           data_type: varchar(5)
         - name: emailpromotion
-          description: "Promoção por e-mail"
+          description: "Promoção por e-mail do cliente"
           data_type: number(38)
         - name: demographics
-          description: "Dados demográficos"
+          description: "Dados demográficos do cliente"
           data_type: varchar(1000)
         - name: rowguidperson
           description: "GUID da linha da tabela person"
           data_type: varchar(38)
         - name: modifieddateperson
-          description: "Data da última modificação da tabela person"
+          description: "Data da última modificação do registro da tabela person"
           data_type: date
