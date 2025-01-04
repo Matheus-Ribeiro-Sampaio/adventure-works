@@ -15,7 +15,9 @@ WITH FCT_ORDER AS (
         TOTALDUE,
         PRODUCTID,
         SALESREASONID,
-        SALESORDERDETAILID
+        ORDERQTY, 
+        UNITPRICE, 
+        UNITPRICEDISCOUNT
     FROM 
         {{ ref('int_sales_order') }}
 )
