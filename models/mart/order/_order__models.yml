@@ -63,11 +63,15 @@ models:
           data_type: number(38)
           data_tests:
               - not_null
-        - name: salesorderdetailid
-          description: "ID do detalhe da venda"
+        - name: orderqty
+          description: "Quantidade de itens"
           data_type: number(38)
-          data_tests:
-              - not_null
+        - name: unitprice
+          description: "Preço unitário"
+          data_type: float
+        - name: unitpricediscount
+          description: "Desconto do preço unitário"
+          data_type: float
   - name: dom_order_reason
     description: "Tabela dimensão do motivo da venda"
     config:
@@ -88,30 +92,6 @@ models:
       - name: reasontype
         description: "Tipo de motivo da venda"
         data_type: varchar(50)
-  - name: dim_order_detail
-    description: "Tabela dimensão de detalhes das vendas"
-    config:
-      tags: 
-        - pedido
-        - venda
-        - detalhe
-        - dimensao
-    columns:
-      - name: salesorderdetailid
-        description: "ID do detalhe da venda"
-        data_type: number(38)
-        data_tests:
-            - unique
-            - not_null
-      - name: orderqty
-        description: "Quantidade de itens"
-        data_type: number(38)
-      - name: unitprice
-        description: "Preço unitário"
-        data_type: float
-      - name: unitpricediscount
-        description: "Desconto do preço unitário"
-        data_type: float
   - name: dim_order_status
     description: "Tabela do status da venda"
     config:
