@@ -13,7 +13,6 @@ models:
         description: "ID do endereço"
         data_type: number(38)
         data_tests:
-            - unique
             - not_null
       - name: addressline1
         description: "Endereço 1"

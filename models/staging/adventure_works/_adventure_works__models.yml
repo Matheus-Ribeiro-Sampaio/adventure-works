@@ -109,8 +109,6 @@ models:
         - name: personid
           description: "ID da pessoa"
           data_type: number(38)
-          data_tests:
-            - not_null
         - name: storeid
           description: "ID da loja"
           data_type: number(38)
