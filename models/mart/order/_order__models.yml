@@ -59,7 +59,7 @@ models:
               - not_null
         - name: salesreasonid
           description: "ID do motivo da venda"
-          data_type: number(38)
+          data_type: varchar(100)
         - name: orderqty
           description: "Quantidade de itens"
           data_type: number(38)
@@ -80,15 +80,15 @@ models:
     columns:    
       - name: salesreasonid
         description: "ID do motivo da venda"
-        data_type: number(38)
+        data_type: varchar(100)
         data_tests:
             - not_null
       - name: reason
         description: "Descrição do motivo da venda"
-        data_type: varchar(50)
+        data_type: varchar(250)
       - name: reasontype
         description: "Tipo de motivo da venda"
-        data_type: varchar(50)
+        data_type: varchar(200)
   - name: dim_order_status
     description: "Tabela do status da venda"
     config:
