@@ -102,7 +102,9 @@ models:
               - not_null
         - name: salesreasonid
           description: "ID do motivo da venda"
-          data_type: number(38)
+          data_type: varchar(100)
+          data_tests:
+              - not_null
         - name: salesorderdetailid
           description: "ID do detalhe da venda"
           data_type: number(38)
@@ -132,18 +134,18 @@ models:
           - not_null      
       - name: salesreasonid
         description: "ID do motivo da venda"
-        data_type: number(38)
+        data_type: varchar(100)
         data_tests:
             - not_null
       - name: name
         description: "Descrição do motivo da venda"
-        data_type: varchar(50)
+        data_type: varchar(250)
       - name: reasontype
         description: "Tipo de motivo da venda"
-        data_type: varchar(50)
+        data_type: varchar(200)
       - name: modifieddate
         description: "Data da última modificação do registro"
-        data_type: date
+        data_type: varchar(250)
   - name: int_sales_detail
     description: "Tabela de detalhes das vendas"
     config:
