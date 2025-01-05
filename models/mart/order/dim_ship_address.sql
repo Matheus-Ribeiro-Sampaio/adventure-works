@@ -1,7 +1,7 @@
 -- models/mart/order/dim_ship_address.sql
 
 WITH DIM_SHIP_ADDRESS AS (
-    SELECT 
+    SELECT DISTINCT
         SHIPTOADDRESSID,  
         CITY, 
         STATE_PROVINCE, 

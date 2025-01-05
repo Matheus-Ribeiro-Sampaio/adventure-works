@@ -1,7 +1,7 @@
 -- models/mart/order/dim_order_reason.sql
 
 WITH DIM_ORDER_REASON AS (
-    SELECT 
+    SELECT DISTINCT
         SALESREASONID, 
         NAME AS REASON, 
         REASONTYPE
